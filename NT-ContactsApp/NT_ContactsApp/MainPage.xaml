@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:NT_ContactsApp"
+             x:Class="NT_ContactsApp.MainPage">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Load Contacts" Clicked="LoadContacts_Clicked" />
+        <ToolbarItem Text="Add Contact" Clicked="ToolbarItem_Clicked" />
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <StackLayout>
+            <ListView
+                x:Name="ContactsListView"
+                VerticalOptions="FillAndExpand"
+                HorizontalOptions="Fill"
+                IsPullToRefreshEnabled="true"
+                HasUnevenRows="true"
+                CachingStrategy="RecycleElement">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Padding="10" Orientation="Vertical">
+                                <Label x:Name="ContactName"
+                                       Text="{Binding DisplayName}"
+                                       LineBreakMode="TailTruncation"
+                                       FontSize="16"></Label>
+                                <Label x:Name="PhoneNumber"
+                                    Text="{Binding PhoneNumber}"
+                                       LineBreakMode="TailTruncation"
+                                       FontSize="14"></Label>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
